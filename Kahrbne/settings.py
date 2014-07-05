@@ -10,7 +10,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 CURRENT_PATH = os.path.abspath(os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
 MANAGERS = ADMINS
-PROJECT_ROOT = BASE_DIR  # /MolPortal
+PROJECT_ROOT = BASE_DIR  # /Kahrbne
 
 DATABASES = {
     'default': {
@@ -67,18 +67,17 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
 )
 
 # List of finder classes that know how to find static files in
 # various locations.
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
+# STATICFILES_FINDERS = (
+# 'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
+# )
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'ylj)owl&^bbyzajhy!5012wv+1(0xbfwqw@wbq-@^u+w1ex1$2'
@@ -122,6 +121,16 @@ INSTALLED_APPS = (
     'KahrbneApp',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+)
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
