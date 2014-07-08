@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+        .btn {
+            text-align: right;
+        }
+    </style>
+    welcome to photovoltaic
+    <form action="{% url "KahrbneApp.views.photovoltaic" %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" style="text-align: left;" type="submit" value="Submit">
+    </form>
+    <script>
+        $(document).ready(function () {
+            {% if result %}
+                alert("{{ result }}");
+            {% endif %}
+        });
+    </script>
+{% endblock %}
